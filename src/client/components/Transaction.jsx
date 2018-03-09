@@ -46,6 +46,7 @@ class Transaction extends Component {
       transaction: {},
       showValidateTransaction: false
     })
+    this.props.addBlock();
     console.log("Transaction saved ! ");
   }
 

@@ -66,7 +66,7 @@ class DashBoard extends Component {
 
   getWalletsSection = () => {
     return (
-      <Fragment >
+      <div className="container" >
         <div className="row">
           {
             wallets.map((wallet) => {
@@ -74,7 +74,7 @@ class DashBoard extends Component {
             })
           }
         </div>
-      </Fragment >
+      </div>
     )
   }
 
@@ -85,7 +85,7 @@ class DashBoard extends Component {
         <div className="row">
           {
             transactions.map((transaction) => {
-              return (<Transaction data={transaction}></Transaction>)
+              return (<Transaction addBlock={this.addBlock} data={transaction}></Transaction>)
             })
           }
         </div>
@@ -104,8 +104,7 @@ class DashBoard extends Component {
           <div className="col-8">
             <h2> Dashboard.</h2>
             {this.getTransactionsSection()}
-            <button onClick={this.addBlock}
-              type="button" className="btn btn-primary">ADD BLOCK</button>
+            <h2> Wallets </h2>
             {this.getWalletsSection()}
           </div>
         </div>
