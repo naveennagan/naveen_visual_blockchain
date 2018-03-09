@@ -43,7 +43,6 @@ class Transaction extends Component {
 
   saveTransaction = () => {
     this.setState({
-      transaction: {},
       showValidateTransaction: false
     })
     var blockData = {
@@ -57,7 +56,6 @@ class Transaction extends Component {
 
   closeTransactionPopup = () => {
     this.setState({
-      transaction: {},
       showValidateTransaction: false
     })
     console.log("Transaction closed ! ");
