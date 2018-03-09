@@ -1,11 +1,36 @@
 import React, { Component, Fragment } from 'react';
 import Wallet from './Wallet.jsx';
+import Transaction from './Transaction.jsx';
 
 //To be fetched from database.
 const wallets = [
-  { name: 'Naveen', balance: 100 },
-  { name: 'Sasuke', balance: 200 },
-  { name: 'Itachi', balance: 150 }
+  { id: 'naveen', name: 'Naveen', balance: 100 },
+  { id: 'sasuke', name: 'Sasuke', balance: 200 },
+  { id: 'itachi', name: 'Itachi', balance: 150 }
+];
+
+const transactions = [
+  {
+    id: `ns100${Date.now()}`,
+    senderId: 'naveen',
+    recieverId: 'sasuke',
+    amount: 100,
+    date: Date.now()
+  },
+  {
+    id: `ns100${Date.now()}`,
+    senderId: 'sasuke',
+    recieverId: 'itachi',
+    amount: 100,
+    date: Date.now()
+  },
+  {
+    id: `ns100${Date.now()}`,
+    senderId: 'itachi',
+    recieverId: 'naveen',
+    amount: 100,
+    date: Date.now()
+  }
 ];
 class DashBoard extends Component {
   constructor(props) {
@@ -13,6 +38,7 @@ class DashBoard extends Component {
     this.addBlock = this.addBlock.bind(this);
     this.getBlocksSection = this.getBlocksSection.bind(this);
     this.getWalletsSection = this.getWalletsSection.bind(this);
+    this.getTransactionsSection = this.getTransactionsSection.bind(this);
   }
 
   addBlock = () => {
@@ -41,12 +67,29 @@ class DashBoard extends Component {
   getWalletsSection = () => {
     return (
       <Fragment >
-        <div class="row">
-          {wallets.map((wallet) => {
-            return (<Wallet wallet={wallet}></Wallet>)
-          })}
+        <div className="row">
+          {
+            wallets.map((wallet) => {
+              return (<Wallet wallet={wallet}></Wallet>)
+            })
+          }
         </div>
       </Fragment >
+    )
+  }
+
+  getTransactionsSection = () => {
+    return (
+      <div className="container">
+        <h2> New Transactions ! </h2>
+        <div className="row">
+          {
+            transactions.map((transaction) => {
+              return (<Transaction data={transaction}></Transaction>)
+            })
+          }
+        </div>
+      </div>
     )
   }
 
@@ -60,6 +103,7 @@ class DashBoard extends Component {
           </div>
           <div className="col-8">
             <h2> Dashboard.</h2>
+            {this.getTransactionsSection()}
             <button onClick={this.addBlock}
               type="button" className="btn btn-primary">ADD BLOCK</button>
             {this.getWalletsSection()}
