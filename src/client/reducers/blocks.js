@@ -1,4 +1,4 @@
-let get = require('lodash.get');
+var get = require('lodash.get');
 
 export default (state = { blocks: [] }, action = { type: "" }) => {
   switch (action.type) {
