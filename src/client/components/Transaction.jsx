@@ -1,13 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 var get = require('lodash.get');
+import ValidateTransaction from './ValidateTransaction.jsx';
 
 class Transaction extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      showValidateTransaction: false,
+      transaction: this.props.data || {}
+    };
     this.getReciever = this.getReciever.bind(this);
     this.getSender = this.getSender.bind(this);
     this.getAmount = this.getAmount.bind(this);
     this.validateTransaction = this.validateTransaction.bind(this);
+    this.saveTransaction = this.saveTransaction.bind(this);
+    this.closeTransactionPopup = this.closeTransactionPopup.bind(this);
+    this.getValidatePopoverSection = this.getValidatePopoverSection.bind(this);
+
   }
 
   getReciever = () => {
@@ -23,21 +32,56 @@ class Transaction extends Component {
   }
 
   validateTransaction = () => {
-    console.log("Validating Transaction ! ");
-    console.log("Open a Popup ! ");
+    return () => {
+      console.log("Validating Transaction ! ");
+      console.log("Open a Popup ! ");
+      this.setState({
+        showValidateTransaction: true
+      })
+    }
+  }
+
+  saveTransaction = () => {
+    this.setState({
+      transaction: {},
+      showValidateTransaction: false
+    })
+    console.log("Transaction saved ! ");
+  }
+
+  closeTransactionPopup = () => {
+    this.setState({
+      transaction: {},
+      showValidateTransaction: false
+    })
+    console.log("Transaction closed ! ");
+  }
+
+  getValidatePopoverSection = () => {
+    return this.state.showValidateTransaction ? (
+      <ValidateTransaction
+        saveTransaction={this.saveTransaction}
+        cancelValidation={this.closeTransactionPopup}
+        data={this.state.transaction}
+      >
+      </ValidateTransaction>
+    ) : ""
   }
 
   render() {
     return (
-      <div className="card" style={{ width: "10rem" }}>
-        <div className="card-body">
-          <p className="card-text">
-            {this.getSender()} to {this.getReciever()}
-          </p>
-          <p> Amount - {this.getAmount()} </p>
-          <a onClick={this.validateTransaction} className="btn btn-info">Validate</a>
+      <Fragment>
+        <div className="card" style={{ width: "11rem" }}>
+          <div className="card-body">
+            <p className="card-text">
+              {this.getSender()} to {this.getReciever()}
+            </p>
+            <p> Amount - {this.getAmount()} </p>
+            <a onClick={this.validateTransaction()} className="btn btn-info">Validate</a>
+          </div>
         </div>
-      </div>
+        {this.getValidatePopoverSection()}
+      </Fragment>
     )
   }
 }
