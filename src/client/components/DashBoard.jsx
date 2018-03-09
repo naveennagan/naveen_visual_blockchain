@@ -41,10 +41,13 @@ class DashBoard extends Component {
     this.getTransactionsSection = this.getTransactionsSection.bind(this);
   }
 
-  addBlock = () => {
+  addBlock = (data) => {
     var currentDateTime = Date.now();
     var blockData = {
-      name: currentDateTime
+      date: currentDateTime,
+      reciever: data.reciever,
+      sender: data.sender,
+      amount: data.amount
     }
     console.log("Adding Block Chain ! ");
     this.props.addBlock(blockData);
@@ -56,7 +59,13 @@ class DashBoard extends Component {
         <ul className="list-group list-group-flush">
           {
             this.props.blocks.map((block) => {
-              return (<li className="list-group-item">Block Data {block.name}</li>)
+              return (
+                <li className="list-group-item">
+                  Block ID {block.date}
+                  <p>
+                    {block.reciever} recieved {block.amount} from {block.sender}
+                  </p>
+                </li>)
             })
           }
         </ul>

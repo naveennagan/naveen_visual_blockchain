@@ -46,8 +46,13 @@ class Transaction extends Component {
       transaction: {},
       showValidateTransaction: false
     })
-    this.props.addBlock();
-    console.log("Transaction saved ! ");
+    var blockData = {
+      reciever: get(this.state, "transaction.recieverId"),
+      sender: get(this.state, "transaction.senderId"),
+      amount: get(this.state, "transaction.amount")
+    }
+    this.props.addBlock(blockData);
+    console.log("Transaction saved Block Added ! ");
   }
 
   closeTransactionPopup = () => {
