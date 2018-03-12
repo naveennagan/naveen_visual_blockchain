@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
+let cities = ['Chennai', 'Hyderabad', 'Bangalore'];
 
 class StartUpComponent extends Component {
   constructor(props) {
     super(props);
-    this.state = { showPopup: true, node: "New Delhi " };
+    this.state = { showPopup: true, node: cities[0] };
     this.closePopup = this.closePopup.bind(this);
     this.onChangeNode = this.onChangeNode.bind(this);
     this.selectNode = this.selectNode.bind(this);
     this.getModalClass = this.getModalClass.bind(this);
-
+    this.getCitiesSection = this.getCitiesSection.bind(this);
   }
 
   closePopup = () => {
@@ -30,6 +31,26 @@ class StartUpComponent extends Component {
     return this.state.showPopup ? 'modal fade show' : 'modal fade';
   }
 
+  getCitiesSection = () => {
+    return (
+      cities.map((city) => {
+        return (
+          <div class="col">
+            <button type="button" onClick={this.onChangeNode(city)} class="btn btn-info" >
+              {city}
+            </button >
+          </div>
+        )
+      })
+    )
+  }
+
+  onChangeNode = (city) => {
+    return () => {
+      this.setState({ node: city });
+    }
+  }
+
   render() {
     return (
       <div className={this.getModalClass()} style={{ display: 'block' }}
@@ -45,9 +66,10 @@ class StartUpComponent extends Component {
             </div>
             <div className="modal-body">
               <div className="container">
+                <p>Choose Your City ! </p>
+                <p>{this.state.node}</p>
                 <div className="row">
-                  <p>Choose Your City ! </p>
-                  <p>{this.state.node}</p>
+                  {this.getCitiesSection()}
                 </div>
               </div>
             </div>
