@@ -10,6 +10,8 @@ const wallets = [
   { id: 'bangalore', name: 'Bangalore', balance: 150 }
 ];
 
+const leaderBoard = ["Hyderabad", "Chennai", "Bangalore"];
+
 const transactions = [
   {
     id: `ch100${Date.now()}`,
@@ -40,6 +42,7 @@ class DashBoard extends Component {
     this.getBlocksSection = this.getBlocksSection.bind(this);
     this.getWalletsSection = this.getWalletsSection.bind(this);
     this.getTransactionsSection = this.getTransactionsSection.bind(this);
+    this.getLeaderBoardSection = this.getLeaderBoardSection.bind(this);
   }
 
   addBlock = (data) => {
@@ -56,7 +59,7 @@ class DashBoard extends Component {
 
   getBlocksSection = () => {
     return (
-      <div className="card" style={{ 'width': '18rem' }}>
+      <div className="card" style={{ 'width': '10rem' }}>
         <ul className="list-group list-group-flush">
           {
             this.props.blocks.map((block) => {
@@ -103,13 +106,32 @@ class DashBoard extends Component {
     )
   }
 
+  getLeaderBoardSection = () => {
+    return (
+      <div className="card" style={{ 'width': '10rem' }}>
+        <ul className="list-group list-group-flush">
+          {
+            leaderBoard.map((city, index) => {
+              return (
+                <li className="list-group-item">
+                  <p>
+                    {index + 1} {city}
+                  </p>
+                </li>)
+            })
+          }
+        </ul>
+      </div>
+    )
+  }
+
   render() {
     return (
       <Fragment>
         <StartUpComponent />
         <div className="container" >
           <div className="row">
-            <div className="col">
+            <div className="col-2">
               <h1>Blocks</h1>
               {this.getBlocksSection()}
             </div>
@@ -118,6 +140,10 @@ class DashBoard extends Component {
               {this.getTransactionsSection()}
               <h2> Wallets </h2>
               {this.getWalletsSection()}
+            </div>
+            <div className="col-2">
+              <h3>LeaderBoard</h3>
+              {this.getLeaderBoardSection()}
             </div>
           </div>
         </div>

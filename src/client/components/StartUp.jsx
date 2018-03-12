@@ -25,6 +25,7 @@ class StartUpComponent extends Component {
 
   selectNode = () => {
     console.log("Node Changed ", this.state.node);
+    this.setState({ showPopup: false });
   }
 
   getModalClass = () => {
