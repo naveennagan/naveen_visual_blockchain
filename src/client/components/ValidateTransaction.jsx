@@ -17,7 +17,7 @@ class ValidateTransaction extends Component {
 
   render() {
     return (
-      <div className="modal" style={{ display: 'block' }}
+      <div className="modal show" style={{ display: 'block' }}
         tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content">

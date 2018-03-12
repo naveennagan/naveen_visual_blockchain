@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import Wallet from './Wallet.jsx';
 import Transaction from './Transaction.jsx';
+import StartUpComponent from './StartUp.jsx';
 
 //To be fetched from database.
 const wallets = [
@@ -104,20 +105,23 @@ class DashBoard extends Component {
 
   render() {
     return (
-      <div className="container" >
-        <div className="row">
-          <div className="col">
-            <h1>Blocks</h1>
-            {this.getBlocksSection()}
-          </div>
-          <div className="col-8">
-            <h2> Dashboard.</h2>
-            {this.getTransactionsSection()}
-            <h2> Wallets </h2>
-            {this.getWalletsSection()}
+      <Fragment>
+        <StartUpComponent />
+        <div className="container" >
+          <div className="row">
+            <div className="col">
+              <h1>Blocks</h1>
+              {this.getBlocksSection()}
+            </div>
+            <div className="col-8">
+              <h2> Dashboard.</h2>
+              {this.getTransactionsSection()}
+              <h2> Wallets </h2>
+              {this.getWalletsSection()}
+            </div>
           </div>
         </div>
-      </div>
+      </Fragment>
     );
   }
 
