@@ -21,7 +21,7 @@ class Wallet extends Component {
       <div className="card" style={{ width: "10rem" }}>
         <img className="card-img-top" src="images/wallet.jpeg" alt="Wallet" />
         <div className="card-body">
-          <p className="card-text">Name {this.getWalletName()}</p>
+          <p className="card-text">{this.getWalletName()}</p>
           <p className="card-text">Balance Rs.{this.getWalletBalance()}</p>
         </div>
       </div>

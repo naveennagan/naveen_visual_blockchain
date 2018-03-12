@@ -35,7 +35,7 @@ class StartUpComponent extends Component {
     return (
       cities.map((city) => {
         return (
-          <div class="col">
+          <div className="col">
             <button type="button" onClick={this.onChangeNode(city)} className="btn btn-info" >
               {city}
             </button >
@@ -52,8 +52,8 @@ class StartUpComponent extends Component {
   }
 
   render() {
-    return (
-      <div className={this.getModalClass()} style={{ display: 'block' }}
+    return this.state.showPopup ? (
+      <div className='modal' style={{ display: 'block' }}
         tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content">
@@ -82,7 +82,7 @@ class StartUpComponent extends Component {
           </div>
         </div>
       </div>
-    )
+    ) : ""
   }
 
 
