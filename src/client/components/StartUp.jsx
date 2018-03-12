@@ -36,7 +36,7 @@ class StartUpComponent extends Component {
       cities.map((city) => {
         return (
           <div class="col">
-            <button type="button" onClick={this.onChangeNode(city)} class="btn btn-info" >
+            <button type="button" onClick={this.onChangeNode(city)} className="btn btn-info" >
               {city}
             </button >
           </div>

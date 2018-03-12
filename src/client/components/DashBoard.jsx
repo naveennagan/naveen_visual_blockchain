@@ -5,30 +5,30 @@ import StartUpComponent from './StartUp.jsx';
 
 //To be fetched from database.
 const wallets = [
-  { id: 'naveen', name: 'Naveen', balance: 100 },
-  { id: 'sasuke', name: 'Sasuke', balance: 200 },
-  { id: 'itachi', name: 'Itachi', balance: 150 }
+  { id: 'chennai', name: 'Chennai', balance: 100 },
+  { id: 'hyderabad', name: 'Hyderabad', balance: 200 },
+  { id: 'bangalore', name: 'Bangalore', balance: 150 }
 ];
 
 const transactions = [
   {
-    id: `ns100${Date.now()}`,
-    senderId: 'naveen',
-    recieverId: 'sasuke',
+    id: `ch100${Date.now()}`,
+    senderId: 'chennai',
+    recieverId: 'hyderabad',
     amount: 100,
     date: Date.now()
   },
   {
-    id: `ns100${Date.now()}`,
-    senderId: 'sasuke',
-    recieverId: 'itachi',
+    id: `hb100${Date.now()}`,
+    senderId: 'hyderabad',
+    recieverId: 'bangalore',
     amount: 100,
     date: Date.now()
   },
   {
-    id: `ns100${Date.now()}`,
-    senderId: 'itachi',
-    recieverId: 'naveen',
+    id: `bc100${Date.now()}`,
+    senderId: 'bangalore',
+    recieverId: 'chennai',
     amount: 100,
     date: Date.now()
   }
