@@ -1,11 +1,13 @@
 import { connect } from 'react-redux';
 import DashBoard from '../components/DashBoard.jsx';
 let get = require('lodash.get');
+import { fetchTransactionsAction } from '../actions/transactions'
 
 
 const mapStateToProps = (state) => {
   return {
-    blocks: get(state, 'blocks') || []
+    blocks: get(state, 'blocks.blocks') || [],
+    transactions: get(state, 'transactions.transactions') || []
   }
 }
 
@@ -17,6 +19,9 @@ const mapDispatchToProps = (dispatch) => {
         data: block
       }
       dispatch(addBlockAction);
+    },
+    getTransactions: () => {
+      dispatch(fetchTransactionsAction());
     }
   }
 }

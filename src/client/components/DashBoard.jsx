@@ -45,6 +45,10 @@ class DashBoard extends Component {
     this.getLeaderBoardSection = this.getLeaderBoardSection.bind(this);
   }
 
+  componentDidMount() {
+    this.props.getTransactions();
+  }
+
   addBlock = (data) => {
     var currentDateTime = Date.now();
     var blockData = {
@@ -97,7 +101,7 @@ class DashBoard extends Component {
         <h2> New Transactions ! </h2>
         <div className="row">
           {
-            transactions.map((transaction) => {
+            this.props.transactions.map((transaction) => {
               return (<Transaction addBlock={this.addBlock} data={transaction}></Transaction>)
             })
           }
